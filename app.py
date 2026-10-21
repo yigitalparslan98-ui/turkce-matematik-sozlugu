@@ -1,10 +1,10 @@
 import streamlit as st
 
 st.set_page_config(
-    page_title="Türkçe Matematik Sözlüğü", page_icon="📐", layout="wide"
+    page_title="6. Sınıf Türkçe Matematik Sözlüğü", page_icon="📐", layout="wide"
 )
 
-# Ferah, göz yormayan beyaz ve yeşil tonlarında minimalist CSS stilleri
+# Ferah, göz yormayan beyaz ve yeşil tonlarında minimalist CSS
 st.markdown(
     """
     <style>
@@ -71,162 +71,240 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-# Matematik Sözlüğü Veritabanı (A-Z) ve Uyumlu Vektörel Çizimler
+# 6. Sınıf Müfredatına Uygun Matematik Sözlüğü Veritabanı ve SVG Çizimleri
 math_dictionary = [
     {
         "term": "Açı",
         "category": "Geometri",
-        "desc": (
-            "Başlangıç noktaları ortak olan iki ışının oluşturduğu geometrik"
-            " şekil."
-        ),
-        "example": "Dik açı 90 derece, dar açı 90 dereceden küçük açıdır.",
-        "svg": """
-            <svg width="100%" height="220" viewBox="0 0 200 200" style="background:#ffffff; border:1px solid #e2e8f0; border-radius:4px;">
-                <line x1="40" y1="160" x2="160" y2="160" stroke="#0f172a" stroke-width="2.5"/>
-                <line x1="40" y1="160" x2="140" y2="60" stroke="#16a34a" stroke-width="2.5"/>
-                <path d="M 70 160 A 30 30 0 0 0 63 133" stroke="#2563eb" stroke-width="2" fill="none"/>
-                <text x="80" y="145" fill="#2563eb" font-size="14" font-weight="bold">α</text>
-                <circle cx="40" cy="160" r="4" fill="#0f172a"/>
-            </svg>
-        """,
+        "desc": "Başlangıç noktaları aynı olan iki ışının arasında oluşan açıklığa açı denir.",
+        "example": "Dar açı, dik açı (90°) ve geniş açı çeşitleri vardır.",
+        "svg": """<svg width='100%' height='220' viewBox='0 0 200 200' style='background:#ffffff; border:1px solid #cbd5e1; border-radius:6px;'>
+            <line x1='30' y1='160' x2='170' y2='160' stroke='#0f172a' stroke-width='3'/>
+            <line x1='30' y1='160' x2='140' y2='50' stroke='#16a34a' stroke-width='3'/>
+            <path d='M 70 160 A 40 40 0 0 0 58 132' stroke='#2563eb' stroke-width='2' fill='none'/>
+            <text x='75' y='145' fill='#2563eb' font-size='16' font-weight='bold'>a°</text>
+        </svg>"""
     },
     {
         "term": "Asal Sayı",
-        "category": "Sayılar Kuramı",
-        "desc": (
-            "Sadece 1'e ve kendisine kalansız bölünebilen 1'den büyük doğal"
-            " sayılar."
-        ),
-        "example": (
-            "2, 3, 5, 7, 11, 13... En küçük ve tek çift asal sayı 2'dir."
-        ),
-        "svg": """
-            <svg width="100%" height="220" viewBox="0 0 200 200" style="background:#ffffff; border:1px solid #e2e8f0; border-radius:4px;">
-                <circle cx="50" cy="70" r="18" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
-                <text x="44" y="75" fill="#166534" font-size="15" font-weight="bold">2</text>
-                <circle cx="100" cy="70" r="18" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
-                <text x="94" y="75" fill="#166534" font-size="15" font-weight="bold">3</text>
-                <circle cx="150" cy="70" r="18" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
-                <text x="144" y="75" fill="#166534" font-size="15" font-weight="bold">5</text>
-                <circle cx="75" cy="130" r="18" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
-                <text x="69" y="135" fill="#166534" font-size="15" font-weight="bold">7</text>
-                <circle cx="125" cy="130" r="18" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
-                <text x="113" y="135" fill="#166534" font-size="15" font-weight="bold">11</text>
-            </svg>
-        """,
+        "category": "Sayılarda İşlemler",
+        "desc": "Sadece 1'e ve kendisine bölünebilen, 1'den büyük doğal sayılardır.",
+        "example": "2, 3, 5, 7, 11, 13... En küçük ve tek çift asal sayı 2'dir.",
+        "svg": """<svg width='100%' height='220' viewBox='0 0 200 200' style='background:#ffffff; border:1px solid #cbd5e1; border-radius:6px;'>
+            <circle cx='50' cy='70' r='20' fill='#f0fdf4' stroke='#16a34a' stroke-width='2'/>
+            <text x='44' y='76' fill='#166534' font-size='18' font-weight='bold'>2</text>
+            <circle cx='100' cy='70' r='20' fill='#f0fdf4' stroke='#16a34a' stroke-width='2'/>
+            <text x='94' y='76' fill='#166534' font-size='18' font-weight='bold'>3</text>
+            <circle cx='150' cy='70' r='20' fill='#f0fdf4' stroke='#16a34a' stroke-width='2'/>
+            <text x='144' y='76' fill='#166534' font-size='18' font-weight='bold'>5</text>
+            <circle cx='75' cy='130' r='20' fill='#f0fdf4' stroke='#16a34a' stroke-width='2'/>
+            <text x='69' y='136' fill='#166534' font-size='18' font-weight='bold'>7</text>
+            <circle cx='125' cy='130' r='20' fill='#f0fdf4' stroke='#16a34a' stroke-width='2'/>
+            <text x='115' y='136' fill='#166534' font-size='18' font-weight='bold'>11</text>
+        </svg>"""
     },
     {
-        "term": "Birim Çember",
-        "category": "Trigonometri",
-        "desc": (
-            "Merkezi analitik düzlemin orijininde (0,0) ve yarıçapı 1 birim olan"
-            " çember."
-        ),
-        "example": (
-            "Sinüs ve kosinüs değerlerinin geometrik gösteriminde kullanılır."
-        ),
-        "svg": """
-            <svg width="100%" height="220" viewBox="0 0 200 200" style="background:#ffffff; border:1px solid #e2e8f0; border-radius:4px;">
-                <line x1="20" y1="100" x2="180" y2="100" stroke="#cbd5e1" stroke-width="1.5"/>
-                <line x1="100" y1="20" x2="100" y2="180" stroke="#cbd5e1" stroke-width="1.5"/>
-                <circle cx="100" cy="100" r="60" fill="none" stroke="#16a34a" stroke-width="2"/>
-                <line x1="100" y1="100" x2="142" y2="58" stroke="#2563eb" stroke-width="2"/>
-                <circle cx="142" cy="58" r="3" fill="#2563eb"/>
-            </svg>
-        """,
+        "term": "Açıklık",
+        "category": "Veri İşleme",
+        "desc": "Bir veri grubundaki en büyük değer ile en küçük değer arasındaki farktır.",
+        "example": "5, 12, 20 sayılarında açıklık: 20 - 5 = 15'tir.",
+        "svg": """<svg width='100%' height='220' viewBox='0 0 200 200' style='background:#ffffff; border:1px solid #cbd5e1; border-radius:6px;'>
+            <rect x='30' y='120' width='30' height='40' fill='#bbf7d0' stroke='#16a34a' stroke-width='2'/>
+            <rect x='80' y='80' width='30' height='80' fill='#bbf7d0' stroke='#16a34a' stroke-width='2'/>
+            <rect x='130' y='40' width='30' height='120' fill='#16a34a'/>
+            <line x1='30' y1='30' x2='160' y2='30' stroke='#dc2626' stroke-width='2' stroke-dasharray='4'/>
+            <text x='60' y='25' fill='#dc2626' font-size='13' font-weight='bold'>En Büyük - En Küçük</text>
+        </svg>"""
     },
     {
-        "term": "Çap",
+        "term": "Bölünebilme Kuralları",
+        "category": "Sayılarda İşlemler",
+        "desc": "Bir sayının başka bir sayıya kalansız bölünüp bölünmediğini anlama yöntemleridir.",
+        "example": "Çift sayılar 2'ye, rakamları toplamı 3'ün katı olanlar 3'e tam bölünür.",
+        "svg": """<svg width='100%' height='220' viewBox='0 0 200 200' style='background:#ffffff; border:1px solid #cbd5e1; border-radius:6px;'>
+            <rect x='40' y='50' width='120' height='100' fill='#f0fdf4' stroke='#16a34a' stroke-width='2'/>
+            <text x='65' y='90' fill='#0f172a' font-size='22' font-weight='bold'>240 ÷ 3</text>
+            <text x='65' y='125' fill='#16a34a' font-size='16' font-weight='bold'>Kalan = 0</text>
+        </svg>"""
+    },
+    {
+        "term": "Çarpan (Bölen)",
+        "category": "Sayılarda İşlemler",
+        "desc": "Bir doğal sayıyı kalansız bölen sayılara o sayının çarpanları denir.",
+        "example": "12'nin çarpanları: 1, 2, 3, 4, 6 ve 12'dir.",
+        "svg": """<svg width='100%' height='220' viewBox='0 0 200 200' style='background:#ffffff; border:1px solid #cbd5e1; border-radius:6px;'>
+            <text x='85' y='60' fill='#0f172a' font-size='24' font-weight='bold'>12</text>
+            <line x1='75' y1='80' x2='45' y2='130' stroke='#16a34a' stroke-width='2'/>
+            <line x1='115' y1='80' x2='145' y2='130' stroke='#16a34a' stroke-width='2'/>
+            <text x='35' y='155' fill='#16a34a' font-size='20' font-weight='bold'>3</text>
+            <text x='140' y='155' fill='#16a34a' font-size='20' font-weight='bold'>4</text>
+        </svg>"""
+    },
+    {
+        "term": "Çember",
         "category": "Geometri",
-        "desc": (
-            "Çemberin merkezinden geçen ve çemberi iki eşit parçaya bölen doğru"
-            " parçası."
-        ),
-        "example": "Yarıçapı 5 cm olan bir çemberin çapı 10 cm'dir.",
-        "svg": """
-            <svg width="100%" height="220" viewBox="0 0 200 200" style="background:#ffffff; border:1px solid #e2e8f0; border-radius:4px;">
-                <circle cx="100" cy="100" r="60" fill="none" stroke="#0f172a" stroke-width="2"/>
-                <line x1="40" y1="100" x2="160" y2="100" stroke="#dc2626" stroke-width="2.5"/>
-                <circle cx="100" cy="100" r="4" fill="#0f172a"/>
-            </svg>
-        """,
+        "desc": "Düzlemde sabit bir noktaya eşit uzaklıktaki noktaların oluşturduğu kapalı eğri.",
+        "example": "Çemberin içi boşken, dairenin içi doludur (örneğin simit bir çemberdir).",
+        "svg": """<svg width='100%' height='220' viewBox='0 0 200 200' style='background:#ffffff; border:1px solid #cbd5e1; border-radius:6px;'>
+            <circle cx='100' cy='100' r='60' fill='none' stroke='#16a34a' stroke-width='3'/>
+            <circle cx='100' cy='100' r='4' fill='#0f172a'/>
+            <line x1='100' y1='100' x2='160' y2='100' stroke='#2563eb' stroke-width='2'/>
+            <text x='125' y='95' fill='#2563eb' font-size='14' font-weight='bold'>r</text>
+        </svg>"""
     },
     {
-        "term": "Fonksiyon",
-        "category": "Analiz",
-        "desc": (
-            "Tanım kümesindeki her bir elemanı, değer kümesindeki yalnızca bir"
-            " elemanla eşleyen bağıntı."
-        ),
-        "example": "f(x) = 2x + 1 girdi değerini 2 katının 1 fazlasına taşır.",
-        "svg": """
-            <svg width="100%" height="220" viewBox="0 0 220 200" style="background:#ffffff; border:1px solid #e2e8f0; border-radius:4px;">
-                <ellipse cx="60" cy="100" rx="35" ry="60" fill="none" stroke="#16a34a" stroke-width="2"/>
-                <ellipse cx="160" cy="100" rx="35" ry="60" fill="none" stroke="#2563eb" stroke-width="2"/>
-                <text x="45" y="80" fill="#0f172a" font-size="14">x₁</text>
-                <text x="45" y="120" fill="#0f172a" font-size="14">x₂</text>
-                <text x="145" y="80" fill="#0f172a" font-size="14">y₁</text>
-                <text x="145" y="120" fill="#0f172a" font-size="14">y₂</text>
-                <path d="M 75 80 Q 110 50 145 80" fill="none" stroke="#d97706" stroke-width="2"/>
-                <text x="105" y="60" fill="#d97706" font-size="12" font-weight="bold">f</text>
-            </svg>
-        """,
+        "term": "Dik Açı",
+        "category": "Geometri",
+        "desc": "Ölçüsü tam 90 derece olan açıdır.",
+        "example": "Kare ve dikdörtgenin her bir iç açısı dik açıdır.",
+        "svg": """<svg width='100%' height='220' viewBox='0 0 200 200' style='background:#ffffff; border:1px solid #cbd5e1; border-radius:6px;'>
+            <line x1='50' y1='150' x2='150' y2='150' stroke='#0f172a' stroke-width='3'/>
+            <line x1='50' y1='150' x2='50' y2='50' stroke='#0f172a' stroke-width='3'/>
+            <rect x='50' y='130' width='20' height='20' fill='none' stroke='#16a34a' stroke-width='2'/>
+            <circle cx='60' cy='140' r='2' fill='#16a34a'/>
+            <text x='85' y='110' fill='#16a34a' font-size='18' font-weight='bold'>90°</text>
+        </svg>"""
     },
+    {
+        "term": "Hacim",
+        "category": "Ölçme",
+        "desc": "Üç boyutlu bir cismin uzayda kapladığı alana hacim denir.",
+        "example": "Prizmanın hacmi = Taban Alanı x Yükseklik kuralı ile bulunur.",
+        "svg": """<svg width='100%' height='220' viewBox='0 0 200 200' style='background:#ffffff; border:1px solid #cbd5e1; border-radius:6px;'>
+            <rect x='50' y='80' width='70' height='70' fill='#f0fdf4' stroke='#16a34a' stroke-width='2'/>
+            <path d='M 50 80 L 85 45 L 155 45 L 120 80' fill='#bbf7d0' stroke='#16a34a' stroke-width='2'/>
+            <path d='M 120 80 L 155 45 L 155 115 L 120 150' fill='#86efac' stroke='#16a34a' stroke-width='2'/>
+        </svg>"""
+    },
+    {
+        "term": "İki Kümenin Birleşimi",
+        "category": "Kümeler",
+        "desc": "İki veya daha fazla kümenin bütün elemanlarının oluşturduğu yeni kümedir (∪ sembolü).",
+        "example": "A = {1, 2} ve B = {2, 3} ise A ∪ B = {1, 2, 3}'tür.",
+        "svg": """<svg width='100%' height='220' viewBox='0 0 200 200' style='background:#ffffff; border:1px solid #cbd5e1; border-radius:6px;'>
+            <circle cx='75' cy='100' r='45' fill='#bbf7d0' fill-opacity='0.7' stroke='#16a34a' stroke-width='2'/>
+            <circle cx='125' cy='100' r='45' fill='#bbf7d0' fill-opacity='0.7' stroke='#16a34a' stroke-width='2'/>
+            <text x='55' y='105' fill='#0f172a' font-size='16' font-weight='bold'>A</text>
+            <text x='135' y='105' fill='#0f172a' font-size='16' font-weight='bold'>B</text>
+        </svg>"""
+    },
+    {
+        "term": "İki Kümenin Kesişimi",
+        "category": "Kümeler",
+        "desc": "İki kümedeki ortak elemanların oluşturduğu kümedir (∩ sembolü).",
+        "example": "A = {a, b} ve B = {b, c} ise A ∩ B = {b}'dir.",
+        "svg": """<svg width='100%' height='220' viewBox='0 0 200 200' style='background:#ffffff; border:1px solid #cbd5e1; border-radius:6px;'>
+            <circle cx='75' cy='100' r='45' fill='none' stroke='#0f172a' stroke-width='2'/>
+            <circle cx='125' cy='100' r='45' fill='none' stroke='#0f172a' stroke-width='2'/>
+            <path d='M 100 60 A 45 45 0 0 1 100 140 A 45 45 0 0 1 100 60' fill='#16a34a'/>
+        </svg>"""
+    },
+    {
+        "term": "Kesir",
+        "category": "Kesirler",
+        "desc": "Bir bütünün eş parçalarını gösteren ifadedir (Pay / Payda).",
+        "example": "3/4 kesri, bir bütünün 4 eşit parçaya bölünüp 3'ünün alındığını gösterir.",
+        "svg": """<svg width='100%' height='220' viewBox='0 0 200 200' style='background:#ffffff; border:1px solid #cbd5e1; border-radius:6px;'>
+            <rect x='40' y='70' width='120' height='60' fill='none' stroke='#0f172a' stroke-width='2'/>
+            <rect x='40' y='70' width='30' height='60' fill='#16a34a'/>
+            <rect x='70' y='70' width='30' height='60' fill='#16a34a'/>
+            <rect x='100' y='70' width='30' height='60' fill='#16a34a'/>
+            <line x1='70' y1='70' x2='70' y2='130' stroke='#0f172a' stroke-width='2'/>
+            <line x1='100' y1='70' x2='100' y2='130' stroke='#0f172a' stroke-width='2'/>
+            <line x1='130' y1='70' x2='130' y2='130' stroke='#0f172a' stroke-width='2'/>
+            <text x='88' y='165' fill='#16a34a' font-size='20' font-weight='bold'>3 / 4</text>
+        </svg>"""
+    },
+    {
+        "term": "Muttasıl (Komşu) Açılar",
+        "category": "Geometri",
+        "desc": "Başlangıç noktaları ve birer kolları ortak olan açılardır.",
+        "example": "Yan yana duran ve bir ışını paylaşan iki açı komşudur.",
+        "svg": """<svg width='100%' height='220' viewBox='0 0 200 200' style='background:#ffffff; border:1px solid #cbd5e1; border-radius:6px;'>
+            <line x1='40' y1='150' x2='160' y2='150' stroke='#0f172a' stroke-width='3'/>
+            <line x1='40' y1='150' x2='100' y2='40' stroke='#16a34a' stroke-width='3'/>
+            <line x1='40' y1='150' x2='150' y2='80' stroke='#2563eb' stroke-width='3'/>
+        </svg>"""
+    },
+    {
+        "term": "Ondalık Gösterim",
+        "category": "Kesirler ve Ondalık",
+        "desc": "Paydası 10, 100, 1000 olan kesirlerin virgül kullanılarak yazılışıdır.",
+        "example": "5/10 = 0,5 veya 25/100 = 0,25 şeklinde ifade edilir.",
+        "svg": """<svg width='100%' height='220' viewBox='0 0 200 200' style='background:#ffffff; border:1px solid #cbd5e1; border-radius:6px;'>
+            <rect x='40' y='60' width='120' height='80' fill='#f0fdf4' stroke='#16a34a' stroke-width='2'/>
+            <text x='58' y='110' fill='#0f172a' font-size='32' font-weight='bold'>0,75</text>
+        </svg>"""
+    },
+    {
+        "term": "Oran",
+        "category": "Oran ve Orantı",
+        "desc": "İki çokluğun birbirine bölünerek karşılaştırılmasıdır.",
+        "example": "Ali'nin yaşının Veli'nin yaşına oranı: 12 / 15 = 4 / 5'tir.",
+        "svg": """<svg width='100%' height='220' viewBox='0 0 200 200' style='background:#ffffff; border:1px solid #cbd5e1; border-radius:6px;'>
+            <text x='85' y='85' fill='#16a34a' font-size='28' font-weight='bold'>a</text>
+            <line x1='70' y1='100' x2='130' y2='100' stroke='#0f172a' stroke-width='3'/>
+            <text x='85' y='135' fill='#2563eb' font-size='28' font-weight='bold'>b</text>
+        </svg>"""
+    },
+    {
+        "term": "Paralelkenar",
+        "category": "Geometri",
+        "desc": "Karşılıklı kenarları birbirine paralel ve eşit uzunlukta olan dörtgendir.",
+        "example": "Paralelkenarın alanı = Taban uzunluğu x O tabana ait yükseklik.",
+        "svg": """<svg width='100%' height='220' viewBox='0 0 200 200' style='background:#ffffff; border:1px solid #cbd5e1; border-radius:6px;'>
+            <polygon points='60,140 160,140 130,60 30,60' fill='#f0fdf4' stroke='#16a34a' stroke-width='3'/>
+            <line x1='30' y1='60' x2='30' y2='140' stroke='#dc2626' stroke-width='2' stroke-dasharray='4'/>
+            <text x='15' y='105' fill='#dc2626' font-size='14' font-weight='bold'>h</text>
+        </svg>"""
+    },
+    {
+        "term": "Tümleyen Açılar",
+        "category": "Geometri",
+        "desc": "Ölçüleri toplamı 90 derece olan iki açıya tümleyen açılar denir.",
+        "example": "30°'lik açının tümleyeni 60°'dir (30 + 60 = 90).",
+        "svg": """<svg width='100%' height='220' viewBox='0 0 200 200' style='background:#ffffff; border:1px solid #cbd5e1; border-radius:6px;'>
+            <path d='M 50 150 L 150 150 L 50 50 Z' fill='#f0fdf4' stroke='#0f172a' stroke-width='2'/>
+            <line x1='50' y1='150' x2='120' y2='80' stroke='#16a34a' stroke-width='2.5'/>
+            <text x='70' y='135' fill='#16a34a' font-size='14' font-weight='bold'>30°</text>
+            <text x='60' y='100' fill='#2563eb' font-size='14' font-weight='bold'>60°</text>
+        </svg>"""
+    },
+    {
+        "term": "Üslü İfade",
+        "category": "Sayılarda İşlemler",
+        "desc": "Bir sayının kendisi ile tekrarlı çarpımının kısa yoldan gösterimidir.",
+        "example": "5³ = 5 x 5 x 5 = 125 (5 üssü 3 okunur).",
+        "svg": """<svg width='100%' height='220' viewBox='0 0 200 200' style='background:#ffffff; border:1px solid #cbd5e1; border-radius:6px;'>
+            <text x='75' y='120' fill='#0f172a' font-size='48' font-weight='bold'>a</text>
+            <text x='105' y='80' fill='#16a34a' font-size='28' font-weight='bold'>n</text>
+        </svg>"""
+    },
+    {
+        "term": "Veri",
+        "category": "Veri İşleme",
+        "desc": "Bir konu hakkında bilgi toplamak amacıyla elde edilen değerlerdir.",
+        "example": "Sınıftaki öğrencilerin boy uzunlukları birer veridir.",
+        "svg": """<svg width='100%' height='220' viewBox='0 0 200 200' style='background:#ffffff; border:1px solid #cbd5e1; border-radius:6px;'>
+            <rect x='40' y='110' width='25' height='50' fill='#16a34a'/>
+            <rect x='85' y='70' width='25' height='90' fill='#16a34a'/>
+            <rect x='130' y='40' width='25' height='120' fill='#16a34a'/>
+        </svg>"""
+    },
+    {
+        "term": "Yükseklik",
+        "category": "Geometri",
+        "desc": "Bir geometrik şeklin tepe noktasından tabanına indirilen dik doğru parçasıdır.",
+        "example": "Üçgenin alanı = (Taban x Yükseklik) / 2 formülüyle bulunur.",
+        "svg": """<svg width='100%' height='220' viewBox='0 0 200 200' style='background:#ffffff; border:1px solid #cbd5e1; border-radius:6px;'>
+            <polygon points='30,150 170,150 100,50' fill='none' stroke='#0f172a' stroke-width='2'/>
+            <line x1='100' y1='50' x2='100' y2='150' stroke='#dc2626' stroke-width='2.5' stroke-dasharray='4'/>
+            <text x='105' y='100' fill='#dc2626' font-size='16' font-weight='bold'>h</text>
+        </svg>"""
+    }
 ]
 
-# Diğer terimler için temiz ve şık varsayılan vektör şeması
-default_svg = """
-    <svg width="100%" height="220" viewBox="0 0 200 200" style="background:#ffffff; border:1px solid #e2e8f0; border-radius:4px;">
-        <rect x="40" y="40" width="120" height="120" fill="none" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="4,4"/>
-        <line x1="40" y1="40" x2="160" y2="160" stroke="#16a34a" stroke-width="2"/>
-        <line x1="160" y1="40" x2="40" y2="160" stroke="#16a34a" stroke-width="2"/>
-        <circle cx="100" cy="100" r="8" fill="#2563eb"/>
-    </svg>
-"""
-
-full_terms = [
-    "Açı",
-    "Asal Sayı",
-    "Birim Çember",
-    "Çap",
-    "Derece",
-    "Eğim",
-    "Fonksiyon",
-    "Geometri",
-    "Geniş Açı",
-    "Hipotenüs",
-    "Işın",
-    "İntegral",
-    "Koordinat Sistemi",
-    "Limit",
-    "Matris",
-    "Nokta",
-    "Orijin",
-    "Öklit Bağıntısı",
-    "Polinom",
-    "Rasyonel Sayılar",
-    "Sabit Terim",
-    "Türev",
-    "Uzaklık",
-    "Üs (Kuvvet)",
-    "Vektör",
-    "Yarıçap",
-    "Zaman Sırası (Dizi)",
-]
-
-existing_terms = {item["term"] for item in math_dictionary}
-for t in full_terms:
-  if t not in existing_terms:
-    math_dictionary.append({
-        "term": t,
-        "category": "Matematik",
-        "desc": f"{t} kavramı, matematiksel analiz ve hesaplamalarda temel bir rol oynar.",
-        "example": f"{t} ile ilgili temel bir formül veya uygulama örneği.",
-        "svg": default_svg,
-    })
-
-# Sol üst mod seçimi
+# Mod Seçimi (Sol Üst)
 col_mode1, col_mode2 = st.columns([2, 3])
 with col_mode1:
   mode = st.radio(
@@ -248,14 +326,13 @@ if mode == "Slayt Modu":
   st.progress(current_slide / total)
 
   if st.session_state.slide_idx == 0:
-    # Kapak Slaytı
     st.markdown(
         """
         <div class="slide-card">
-            <div class="slide-category">Proje Sunumu</div>
+            <div class="slide-category">6. Sınıf Matematik Projesi</div>
             <div class="slide-title">Türkçe Matematik Sözlüğü</div>
             <div class="slide-desc">USB olmadığından böyle bir sözlük hazırladım.</div>
-            <div class="slide-example"><b>Hazırlayan:</b> Yiğit ALPARSLAN</div>
+            <div class="slide-example"><b>Hazırlayan:</b> Yiğit</div>
         </div>
         """,
         unsafe_allow_html=True,
@@ -281,16 +358,13 @@ if mode == "Slayt Modu":
           unsafe_allow_html=True,
       )
 
-
   def prev_slide():
     if st.session_state.slide_idx > 0:
       st.session_state.slide_idx -= 1
 
-
   def next_slide():
     if st.session_state.slide_idx < total - 1:
       st.session_state.slide_idx += 1
-
 
   col_prev, col_counter, col_next = st.columns([1, 2, 1])
   with col_prev:
@@ -305,9 +379,7 @@ if mode == "Slayt Modu":
     st.button("Sonraki →", on_click=next_slide, use_container_width=True)
 
 else:
-  st.markdown(
-      "<h1>Sözlük Modu (A-Z Tüm Terimler)</h1>", unsafe_allow_html=True
-  )
+  st.markdown("<h1>Sözlük Modu (A-Z Tüm Terimler)</h1>", unsafe_allow_html=True)
   search_term = st.text_input("Aramak istediğin terimi yaz:", "")
   st.divider()
 
