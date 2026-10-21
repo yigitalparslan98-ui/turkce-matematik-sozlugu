@@ -1,7 +1,7 @@
 import streamlit as st
 
 st.set_page_config(
-    page_title="6. Sınıf Türkçe Matematik Sözlüğü", page_icon="📐", layout="wide"
+    page_title="6. Sınıf Matematik Sözlüğü", page_icon="📐", layout="wide"
 )
 
 # 6. Sınıf Düzeyine Uygun 28 Temel Matematik Terimi
@@ -221,10 +221,10 @@ if mode == "Slayt Modu":
     st.progress(current / total)
     
     if st.session_state.slide_idx == 0:
-        st.subheader("6. Sınıf Matematik Projesi")
+        st.subheader("6. Sınıf Türkçe Projesi")
         st.title("Türkçe Matematik Sözlüğü")
-        st.write("USB olmadığından böyle bir sözlük hazırladım.")
-        st.write("**Hazırlayan:** Yiğit")
+        st.write("USB olmadığından böyle bi sözlük hazırladım.")
+        st.write("**Hazırlayan:** Yiğit ALPARSLAN (Ben)")
     else:
         item = math_dictionary[st.session_state.slide_idx - 1]
         c1, c2 = st.columns([3, 2])
