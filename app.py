@@ -4,7 +4,7 @@ st.set_page_config(
     page_title="Türkçe Matematik Sözlüğü", page_icon=None, layout="centered"
 )
 
-# Keskin, köşeli ve minimalist slayt kartı stili (Arial Font)
+# Siyah Bazlı, Keskin ve Minimalist Slayt Tasarımı (Dark Mode / Brutalist)
 st.markdown(
     """
     <style>
@@ -12,21 +12,22 @@ st.markdown(
         font-family: Arial, sans-serif !important;
     }
     .stApp {
-        background-color: #f4f4f5;
+        background-color: #09090b !important;
+        color: #fafafa !important;
     }
-    /* Keskin köşeli ana slayt kartı */
+    /* Keskin köşeli koyu slayt kartı */
     .slide-card {
-        background-color: #ffffff;
-        border: 2px solid #18181b;
+        background-color: #18181b;
+        border: 2px solid #fafafa;
         border-radius: 0px !important;
         padding: 40px;
-        box-shadow: 6px 6px 0px #18181b;
+        box-shadow: 6px 6px 0px #fafafa;
         margin-top: 20px;
         margin-bottom: 20px;
         min-height: 380px;
     }
     .slide-category {
-        color: #52525b;
+        color: #a1a1aa;
         font-size: 13px;
         text-transform: uppercase;
         letter-spacing: 2px;
@@ -34,34 +35,40 @@ st.markdown(
         font-weight: 700;
     }
     .slide-title {
-        color: #09090b;
+        color: #ffffff;
         font-size: 42px;
         font-weight: 800;
         margin-bottom: 24px;
         letter-spacing: -0.5px;
     }
     .slide-desc {
-        color: #27272a;
+        color: #f4f4f5;
         font-size: 20px;
         line-height: 1.6;
         margin-bottom: 28px;
     }
-    /* Keskin köşeli örnek kutusu */
+    /* Keskin köşeli koyu örnek kutusu */
     .slide-example {
-        background-color: #f4f4f5;
-        border: 1px solid #18181b;
-        border-left: 6px solid #18181b;
+        background-color: #27272a;
+        border: 1px solid #fafafa;
+        border-left: 6px solid #fafafa;
         border-radius: 0px !important;
         padding: 16px 20px;
         font-size: 16px;
-        color: #27272a;
+        color: #f4f4f5;
     }
-    /* Butonları köşeli yapma */
+    /* Butonları köşeli ve koyu tema uyumlu yapma */
     .stButton > button {
+        background-color: #18181b !important;
+        color: #fafafa !important;
         border-radius: 0px !important;
-        border: 2px solid #18181b !important;
+        border: 2px solid #fafafa !important;
         font-weight: bold !important;
-        box-shadow: 3px 3px 0px #18181b !important;
+        box-shadow: 3px 3px 0px #fafafa !important;
+    }
+    .stButton > button:hover {
+        background-color: #27272a !important;
+        color: #ffffff !important;
     }
     </style>
     """,
@@ -332,7 +339,7 @@ if st.session_state.slide_idx == 0:
       unsafe_allow_html=True,
   )
 else:
-  # Diğer Slaytlar: Terimler (slide_idx 1'den başlar, liste indexi slide_idx - 1'dir)
+  # Diğer Slaytlar: Terimler
   item = math_dictionary[st.session_state.slide_idx - 1]
   st.markdown(
       f"""
@@ -365,7 +372,7 @@ with col_prev:
 
 with col_counter:
   st.markdown(
-      f"<p style='text-align: center; color: #18181b; font-weight: bold;"
+      f"<p style='text-align: center; color: #fafafa; font-weight: bold;"
       f" font-size: 14px; margin-top: 10px;'>SLAYT {current_slide} /"
       f" {total}</p>",
       unsafe_allow_html=True,
