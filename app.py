@@ -1,78 +1,7 @@
 import streamlit as st
 
 st.set_page_config(
-    page_title="Türkçe Matematik Sözlüğü", page_icon=None, layout="centered"
-)
-
-# Siyah Bazlı, Keskin ve Minimalist Slayt Tasarımı (Dark Mode / Brutalist)
-st.markdown(
-    """
-    <style>
-    html, body, [class*="css"], div, p, span, h1, h2, h3, h4, h5, h6, button {
-        font-family: Arial, sans-serif !important;
-    }
-    .stApp {
-        background-color: #09090b !important;
-        color: #fafafa !important;
-    }
-    /* Keskin köşeli koyu slayt kartı */
-    .slide-card {
-        background-color: #18181b;
-        border: 2px solid #fafafa;
-        border-radius: 0px !important;
-        padding: 40px;
-        box-shadow: 6px 6px 0px #fafafa;
-        margin-top: 20px;
-        margin-bottom: 20px;
-        min-height: 380px;
-    }
-    .slide-category {
-        color: #a1a1aa;
-        font-size: 13px;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        margin-bottom: 12px;
-        font-weight: 700;
-    }
-    .slide-title {
-        color: #ffffff;
-        font-size: 42px;
-        font-weight: 800;
-        margin-bottom: 24px;
-        letter-spacing: -0.5px;
-    }
-    .slide-desc {
-        color: #f4f4f5;
-        font-size: 20px;
-        line-height: 1.6;
-        margin-bottom: 28px;
-    }
-    /* Keskin köşeli koyu örnek kutusu */
-    .slide-example {
-        background-color: #27272a;
-        border: 1px solid #fafafa;
-        border-left: 6px solid #fafafa;
-        border-radius: 0px !important;
-        padding: 16px 20px;
-        font-size: 16px;
-        color: #f4f4f5;
-    }
-    /* Butonları köşeli ve koyu tema uyumlu yapma */
-    .stButton > button {
-        background-color: #18181b !important;
-        color: #fafafa !important;
-        border-radius: 0px !important;
-        border: 2px solid #fafafa !important;
-        font-weight: bold !important;
-        box-shadow: 3px 3px 0px #fafafa !important;
-    }
-    .stButton > button:hover {
-        background-color: #27272a !important;
-        color: #ffffff !important;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True,
+    page_title="Türkçe Matematik Sözlüğü", page_icon="📐", layout="centered"
 )
 
 # Matematik Sözlüğü Veritabanı (A-Z)
@@ -314,69 +243,69 @@ math_dictionary = [
     },
 ]
 
-# Slayt İndeksi Yönetimi (1 kapak + 27 terim = 28 toplam slayt)
-if "slide_idx" not in st.session_state:
-  st.session_state.slide_idx = 0
-
-total = len(math_dictionary) + 1
-current_slide = st.session_state.slide_idx + 1
-
-# Üst Bilgi / İlerleme Barı
-st.progress(current_slide / total)
-
-# SLAYT İÇERİĞİ
-if st.session_state.slide_idx == 0:
-  # 1. Slayt: Kapak Slaytı
-  st.markdown(
-      """
-    <div class="slide-card">
-        <div class="slide-category">Matematik Projesi</div>
-        <div class="slide-title">Türkçe Matematik Sözlüğü</div>
-        <div class="slide-desc">USB olmadığından böyle bir sözlük hazırladım.</div>
-        <div class="slide-example"><b>Hazırlayan:</b> Yiğit</div>
-    </div>
-    """,
-      unsafe_allow_html=True,
+# Sol üst köşede mod seçimi
+col_mode1, col_mode2 = st.columns([2, 3])
+with col_mode1:
+  mode = st.radio(
+      "Mod Seçimi",
+      ["Slayt Modu", "Sözlük Modu"],
+      horizontal=True,
+      label_visibility="collapsed",
   )
+
+st.divider()
+
+if mode == "Slayt Modu":
+  if "slide_idx" not in st.session_state:
+    st.session_state.slide_idx = 0
+
+  total = len(math_dictionary) + 1
+  current_slide = st.session_state.slide_idx + 1
+
+  st.progress(current_slide / total)
+
+  if st.session_state.slide_idx == 0:
+    st.markdown("# Türkçe Matematik Sözlüğü")
+    st.markdown("## USB olmadığından böyle bir sözlük hazırladım.")
+    st.markdown("### Hazırlayan: Yiğit")
+  else:
+    item = math_dictionary[st.session_state.slide_idx - 1]
+    st.markdown(f"### Kategori: {item['category']}")
+    st.markdown(f"# {item['term']}")
+    st.markdown(f"## {item['desc']}")
+    st.markdown(f"### **Örnek:** {item['example']}")
+
+  def prev_slide():
+    if st.session_state.slide_idx > 0:
+      st.session_state.slide_idx -= 1
+
+  def next_slide():
+    if st.session_state.slide_idx < total - 1:
+      st.session_state.slide_idx += 1
+
+  col_prev, col_counter, col_next = st.columns([1, 2, 1])
+  with col_prev:
+    st.button("← Önceki", on_click=prev_slide, use_container_width=True)
+  with col_counter:
+    st.markdown(
+        f"<h3 style='text-align: center;'>Slayt {current_slide} / {total}</h3>",
+        unsafe_allow_html=True,
+    )
+  with col_next:
+    st.button("Sonraki →", on_click=next_slide, use_container_width=True)
+
 else:
-  # Diğer Slaytlar: Terimler
-  item = math_dictionary[st.session_state.slide_idx - 1]
-  st.markdown(
-      f"""
-    <div class="slide-card">
-        <div class="slide-category">{item['category']}</div>
-        <div class="slide-title">{item['term']}</div>
-        <div class="slide-desc">{item['desc']}</div>
-        <div class="slide-example"><b>Örnek:</b> {item['example']}</div>
-    </div>
-    """,
-      unsafe_allow_html=True,
-  )
+  st.markdown("# Sözlük Modu (A-Z Tüm Terimler)")
+  search_term = st.text_input("Aramak istediğin terimi yaz:", "")
 
+  st.divider()
 
-# Alt Kontrol Butonları
-def prev_slide():
-  if st.session_state.slide_idx > 0:
-    st.session_state.slide_idx -= 1
-
-
-def next_slide():
-  if st.session_state.slide_idx < total - 1:
-    st.session_state.slide_idx += 1
-
-
-col_prev, col_counter, col_next = st.columns([1, 2, 1])
-
-with col_prev:
-  st.button("← Önceki", on_click=prev_slide, use_container_width=True)
-
-with col_counter:
-  st.markdown(
-      f"<p style='text-align: center; color: #fafafa; font-weight: bold;"
-      f" font-size: 14px; margin-top: 10px;'>SLAYT {current_slide} /"
-      f" {total}</p>",
-      unsafe_allow_html=True,
-  )
-
-with col_next:
-  st.button("Sonraki →", on_click=next_slide, use_container_width=True)
+  for item in math_dictionary:
+    if (
+        search_term.lower() in item["term"].lower()
+        or search_term.lower() in item["category"].lower()
+    ):
+      st.markdown(f"## {item['term']} _({item['category']})_")
+      st.markdown(f"### {item['desc']}")
+      st.markdown(f"**Örnek:** {item['example']}")
+      st.divider()
