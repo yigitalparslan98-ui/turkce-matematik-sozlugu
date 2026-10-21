@@ -307,20 +307,35 @@ math_dictionary = [
     },
 ]
 
-# Slayt İndeksi Yönetimi
+# Slayt İndeksi Yönetimi (1 kapak + 27 terim = 28 toplam slayt)
 if "slide_idx" not in st.session_state:
   st.session_state.slide_idx = 0
 
-total = len(math_dictionary)
-item = math_dictionary[st.session_state.slide_idx]
+total = len(math_dictionary) + 1
 current_slide = st.session_state.slide_idx + 1
 
 # Üst Bilgi / İlerleme Barı
 st.progress(current_slide / total)
 
-# SLAYT KARTI (Köşeli HTML / CSS)
-st.markdown(
-    f"""
+# SLAYT İÇERİĞİ
+if st.session_state.slide_idx == 0:
+  # 1. Slayt: Kapak Slaytı
+  st.markdown(
+      """
+    <div class="slide-card">
+        <div class="slide-category">Matematik Projesi</div>
+        <div class="slide-title">Türkçe Matematik Sözlüğü</div>
+        <div class="slide-desc">USB olmadığından böyle bir sözlük hazırladım.</div>
+        <div class="slide-example"><b>Hazırlayan:</b> Yiğit</div>
+    </div>
+    """,
+      unsafe_allow_html=True,
+  )
+else:
+  # Diğer Slaytlar: Terimler (slide_idx 1'den başlar, liste indexi slide_idx - 1'dir)
+  item = math_dictionary[st.session_state.slide_idx - 1]
+  st.markdown(
+      f"""
     <div class="slide-card">
         <div class="slide-category">{item['category']}</div>
         <div class="slide-title">{item['term']}</div>
@@ -328,8 +343,8 @@ st.markdown(
         <div class="slide-example"><b>Örnek:</b> {item['example']}</div>
     </div>
     """,
-    unsafe_allow_html=True,
-)
+      unsafe_allow_html=True,
+  )
 
 
 # Alt Kontrol Butonları
