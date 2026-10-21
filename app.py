@@ -4,7 +4,7 @@ st.set_page_config(
     page_title="Türkçe Matematik Sözlüğü", page_icon="📐", layout="wide"
 )
 
-# Koyu tema, keskin hatlar ve vektörel görünüm için CSS stilleri
+# Ferah, göz yormayan beyaz ve yeşil tonlarında minimalist CSS stilleri
 st.markdown(
     """
     <style>
@@ -12,20 +12,21 @@ st.markdown(
         font-family: Arial, sans-serif !important;
     }
     .stApp {
-        background-color: #09090b !important;
-        color: #fafafa !important;
+        background-color: #f8fafc !important;
+        color: #0f172a !important;
     }
     .slide-card {
-        background-color: #18181b;
-        border: 2px solid #fafafa;
-        border-radius: 0px !important;
+        background-color: #ffffff;
+        border: 1px solid #cbd5e1;
+        border-left: 6px solid #16a34a;
+        border-radius: 6px !important;
         padding: 30px;
-        box-shadow: 6px 6px 0px #fafafa;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
         margin-top: 10px;
         margin-bottom: 20px;
     }
     .slide-category {
-        color: #a1a1aa;
+        color: #16a34a;
         font-size: 13px;
         text-transform: uppercase;
         letter-spacing: 2px;
@@ -33,43 +34,44 @@ st.markdown(
         font-weight: 700;
     }
     .slide-title {
-        color: #ffffff;
+        color: #0f172a;
         font-size: 36px;
         font-weight: 800;
         margin-bottom: 16px;
     }
     .slide-desc {
-        color: #f4f4f5;
+        color: #334155;
         font-size: 18px;
         line-height: 1.5;
         margin-bottom: 20px;
     }
     .slide-example {
-        background-color: #27272a;
-        border: 1px solid #fafafa;
-        border-left: 6px solid #fafafa;
+        background-color: #f0fdf4;
+        border: 1px solid #bbf7d0;
+        border-left: 4px solid #16a34a;
         padding: 14px 18px;
         font-size: 15px;
-        color: #f4f4f5;
+        color: #166534;
+        border-radius: 4px;
     }
     .stButton > button {
-        background-color: #18181b !important;
-        color: #fafafa !important;
-        border-radius: 0px !important;
-        border: 2px solid #fafafa !important;
+        background-color: #ffffff !important;
+        color: #166534 !important;
+        border-radius: 4px !important;
+        border: 1px solid #16a34a !important;
         font-weight: bold !important;
-        box-shadow: 3px 3px 0px #fafafa !important;
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
     }
     .stButton > button:hover {
-        background-color: #27272a !important;
-        color: #ffffff !important;
+        background-color: #f0fdf4 !important;
+        color: #14532d !important;
     }
     </style>
     """,
     unsafe_allow_html=True,
 )
 
-# Matematik Sözlüğü Veritabanı (Terimler + Özel Vektörel SVG Çizimleri)
+# Matematik Sözlüğü Veritabanı (A-Z) ve Uyumlu Vektörel Çizimler
 math_dictionary = [
     {
         "term": "Açı",
@@ -80,12 +82,12 @@ math_dictionary = [
         ),
         "example": "Dik açı 90 derece, dar açı 90 dereceden küçük açıdır.",
         "svg": """
-            <svg width="100%" height="220" viewBox="0 0 200 200" style="background:#111; border:1px solid #444;">
-                <line x1="40" y1="160" x2="160" y2="160" stroke="#fafafa" stroke-width="3"/>
-                <line x1="40" y1="160" x2="140" y2="60" stroke="#38bdf8" stroke-width="3"/>
-                <path d="M 70 160 A 30 30 0 0 0 63 133" stroke="#4ade80" stroke-width="2" fill="none"/>
-                <text x="80" y="145" fill="#4ade80" font-size="14">α</text>
-                <circle cx="40" cy="160" r="4" fill="#fafafa"/>
+            <svg width="100%" height="220" viewBox="0 0 200 200" style="background:#ffffff; border:1px solid #e2e8f0; border-radius:4px;">
+                <line x1="40" y1="160" x2="160" y2="160" stroke="#0f172a" stroke-width="2.5"/>
+                <line x1="40" y1="160" x2="140" y2="60" stroke="#16a34a" stroke-width="2.5"/>
+                <path d="M 70 160 A 30 30 0 0 0 63 133" stroke="#2563eb" stroke-width="2" fill="none"/>
+                <text x="80" y="145" fill="#2563eb" font-size="14" font-weight="bold">α</text>
+                <circle cx="40" cy="160" r="4" fill="#0f172a"/>
             </svg>
         """,
     },
@@ -100,17 +102,17 @@ math_dictionary = [
             "2, 3, 5, 7, 11, 13... En küçük ve tek çift asal sayı 2'dir."
         ),
         "svg": """
-            <svg width="100%" height="220" viewBox="0 0 200 200" style="background:#111; border:1px solid #444;">
-                <circle cx="50" cy="70" r="18" fill="#27272a" stroke="#38bdf8" stroke-width="2"/>
-                <text x="44" y="75" fill="#fafafa" font-size="16">2</text>
-                <circle cx="100" cy="70" r="18" fill="#27272a" stroke="#38bdf8" stroke-width="2"/>
-                <text x="94" y="75" fill="#fafafa" font-size="16">3</text>
-                <circle cx="150" cy="70" r="18" fill="#27272a" stroke="#38bdf8" stroke-width="2"/>
-                <text x="144" y="75" fill="#fafafa" font-size="16">5</text>
-                <circle cx="75" cy="130" r="18" fill="#27272a" stroke="#38bdf8" stroke-width="2"/>
-                <text x="69" y="135" fill="#fafafa" font-size="16">7</text>
-                <circle cx="125" cy="130" r="18" fill="#27272a" stroke="#38bdf8" stroke-width="2"/>
-                <text x="113" y="135" fill="#fafafa" font-size="16">11</text>
+            <svg width="100%" height="220" viewBox="0 0 200 200" style="background:#ffffff; border:1px solid #e2e8f0; border-radius:4px;">
+                <circle cx="50" cy="70" r="18" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+                <text x="44" y="75" fill="#166534" font-size="15" font-weight="bold">2</text>
+                <circle cx="100" cy="70" r="18" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+                <text x="94" y="75" fill="#166534" font-size="15" font-weight="bold">3</text>
+                <circle cx="150" cy="70" r="18" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+                <text x="144" y="75" fill="#166534" font-size="15" font-weight="bold">5</text>
+                <circle cx="75" cy="130" r="18" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+                <text x="69" y="135" fill="#166534" font-size="15" font-weight="bold">7</text>
+                <circle cx="125" cy="130" r="18" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+                <text x="113" y="135" fill="#166534" font-size="15" font-weight="bold">11</text>
             </svg>
         """,
     },
@@ -125,12 +127,12 @@ math_dictionary = [
             "Sinüs ve kosinüs değerlerinin geometrik gösteriminde kullanılır."
         ),
         "svg": """
-            <svg width="100%" height="220" viewBox="0 0 200 200" style="background:#111; border:1px solid #444;">
-                <line x1="20" y1="100" x2="180" y2="100" stroke="#71717a" stroke-width="1.5"/>
-                <line x1="100" y1="20" x2="100" y2="180" stroke="#71717a" stroke-width="1.5"/>
-                <circle cx="100" cy="100" r="60" fill="none" stroke="#38bdf8" stroke-width="2"/>
-                <line x1="100" y1="100" x2="142" y2="58" stroke="#4ade80" stroke-width="2"/>
-                <circle cx="142" cy="58" r="3" fill="#4ade80"/>
+            <svg width="100%" height="220" viewBox="0 0 200 200" style="background:#ffffff; border:1px solid #e2e8f0; border-radius:4px;">
+                <line x1="20" y1="100" x2="180" y2="100" stroke="#cbd5e1" stroke-width="1.5"/>
+                <line x1="100" y1="20" x2="100" y2="180" stroke="#cbd5e1" stroke-width="1.5"/>
+                <circle cx="100" cy="100" r="60" fill="none" stroke="#16a34a" stroke-width="2"/>
+                <line x1="100" y1="100" x2="142" y2="58" stroke="#2563eb" stroke-width="2"/>
+                <circle cx="142" cy="58" r="3" fill="#2563eb"/>
             </svg>
         """,
     },
@@ -143,10 +145,10 @@ math_dictionary = [
         ),
         "example": "Yarıçapı 5 cm olan bir çemberin çapı 10 cm'dir.",
         "svg": """
-            <svg width="100%" height="220" viewBox="0 0 200 200" style="background:#111; border:1px solid #444;">
-                <circle cx="100" cy="100" r="60" fill="none" stroke="#fafafa" stroke-width="2"/>
-                <line x1="40" y1="100" x2="160" y2="100" stroke="#f87171" stroke-width="3"/>
-                <circle cx="100" cy="100" r="4" fill="#fafafa"/>
+            <svg width="100%" height="220" viewBox="0 0 200 200" style="background:#ffffff; border:1px solid #e2e8f0; border-radius:4px;">
+                <circle cx="100" cy="100" r="60" fill="none" stroke="#0f172a" stroke-width="2"/>
+                <line x1="40" y1="100" x2="160" y2="100" stroke="#dc2626" stroke-width="2.5"/>
+                <circle cx="100" cy="100" r="4" fill="#0f172a"/>
             </svg>
         """,
     },
@@ -159,31 +161,30 @@ math_dictionary = [
         ),
         "example": "f(x) = 2x + 1 girdi değerini 2 katının 1 fazlasına taşır.",
         "svg": """
-            <svg width="100%" height="220" viewBox="0 0 220 200" style="background:#111; border:1px solid #444;">
-                <ellipse cx="60" cy="100" rx="35" ry="60" fill="none" stroke="#38bdf8" stroke-width="2"/>
-                <ellipse cx="160" cy="100" rx="35" ry="60" fill="none" stroke="#4ade80" stroke-width="2"/>
-                <text x="45" y="80" fill="#fafafa" font-size="14">x₁</text>
-                <text x="45" y="120" fill="#fafafa" font-size="14">x₂</text>
-                <text x="145" y="80" fill="#fafafa" font-size="14">y₁</text>
-                <text x="145" y="120" fill="#fafafa" font-size="14">y₂</text>
-                <path d="M 75 80 Q 110 50 145 80" fill="none" stroke="#facc15" stroke-width="2"/>
-                <text x="105" y="60" fill="#facc15" font-size="12">f</text>
+            <svg width="100%" height="220" viewBox="0 0 220 200" style="background:#ffffff; border:1px solid #e2e8f0; border-radius:4px;">
+                <ellipse cx="60" cy="100" rx="35" ry="60" fill="none" stroke="#16a34a" stroke-width="2"/>
+                <ellipse cx="160" cy="100" rx="35" ry="60" fill="none" stroke="#2563eb" stroke-width="2"/>
+                <text x="45" y="80" fill="#0f172a" font-size="14">x₁</text>
+                <text x="45" y="120" fill="#0f172a" font-size="14">x₂</text>
+                <text x="145" y="80" fill="#0f172a" font-size="14">y₁</text>
+                <text x="145" y="120" fill="#0f172a" font-size="14">y₂</text>
+                <path d="M 75 80 Q 110 50 145 80" fill="none" stroke="#d97706" stroke-width="2"/>
+                <text x="105" y="60" fill="#d97706" font-size="12" font-weight="bold">f</text>
             </svg>
         """,
     },
 ]
 
-# Geri kalan terimler için şık bir varsayılan şema oluşturan yardımcı fonksiyon
+# Diğer terimler için temiz ve şık varsayılan vektör şeması
 default_svg = """
-    <svg width="100%" height="220" viewBox="0 0 200 200" style="background:#111; border:1px solid #444;">
-        <rect x="40" y="40" width="120" height="120" fill="none" stroke="#38bdf8" stroke-width="2" stroke-dasharray="5,5"/>
-        <line x1="40" y1="40" x2="160" y2="160" stroke="#4ade80" stroke-width="2"/>
-        <line x1="160" y1="40" x2="40" y2="160" stroke="#4ade80" stroke-width="2"/>
-        <circle cx="100" cy="100" r="10" fill="#facc15"/>
+    <svg width="100%" height="220" viewBox="0 0 200 200" style="background:#ffffff; border:1px solid #e2e8f0; border-radius:4px;">
+        <rect x="40" y="40" width="120" height="120" fill="none" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="4,4"/>
+        <line x1="40" y1="40" x2="160" y2="160" stroke="#16a34a" stroke-width="2"/>
+        <line x1="160" y1="40" x2="40" y2="160" stroke="#16a34a" stroke-width="2"/>
+        <circle cx="100" cy="100" r="8" fill="#2563eb"/>
     </svg>
 """
 
-# Sözlük listesindeki diğer eksik terimler için otomatik varsayılan ekleyelim
 full_terms = [
     "Açı",
     "Asal Sayı",
@@ -214,7 +215,6 @@ full_terms = [
     "Zaman Sırası (Dizi)",
 ]
 
-# Eğer listede eksik olan varsa varsayılan svg ile tamamlayalım
 existing_terms = {item["term"] for item in math_dictionary}
 for t in full_terms:
   if t not in existing_terms:
@@ -255,14 +255,13 @@ if mode == "Slayt Modu":
             <div class="slide-category">Proje Sunumu</div>
             <div class="slide-title">Türkçe Matematik Sözlüğü</div>
             <div class="slide-desc">USB olmadığından böyle bir sözlük hazırladım.</div>
-            <div class="slide-example"><b>Hazırlayan:</b> Yiğit</div>
+            <div class="slide-example"><b>Hazırlayan:</b> Yiğit ALPARSLAN</div>
         </div>
         """,
         unsafe_allow_html=True,
     )
   else:
     item = math_dictionary[st.session_state.slide_idx - 1]
-    # Slayt ekranını sol metin, sağ vektörel çizim olarak ikiye bölelim
     col_text, col_img = st.columns([3, 2])
     with col_text:
       st.markdown(
@@ -298,15 +297,17 @@ if mode == "Slayt Modu":
     st.button("← Önceki", on_click=prev_slide, use_container_width=True)
   with col_counter:
     st.markdown(
-        f"<h3 style='text-align: center; color: #fafafa;'>Slayt {current_slide}"
-        f" / {total}</h3>",
+        f"<h3 style='text-align: center; color: #0f172a;'>Slayt"
+        f" {current_slide} / {total}</h3>",
         unsafe_allow_html=True,
     )
   with col_next:
     st.button("Sonraki →", on_click=next_slide, use_container_width=True)
 
 else:
-  st.markdown("<h1>Sözlük Modu (A-Z Tüm Terimler)</h1>", unsafe_allow_html=True)
+  st.markdown(
+      "<h1>Sözlük Modu (A-Z Tüm Terimler)</h1>", unsafe_allow_html=True
+  )
   search_term = st.text_input("Aramak istediğin terimi yaz:", "")
   st.divider()
 
