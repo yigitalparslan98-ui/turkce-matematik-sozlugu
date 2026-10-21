@@ -313,9 +313,10 @@ if "slide_idx" not in st.session_state:
 
 total = len(math_dictionary)
 item = math_dictionary[st.session_state.slide_idx]
+current_slide = st.session_state.slide_idx + 1
 
 # Üst Bilgi / İlerleme Barı
-st.progress((st.session_state.slide_idx + 1) / total)
+st.progress(current_slide / total)
 
 # SLAYT KARTI (Köşeli HTML / CSS)
 st.markdown(
@@ -350,8 +351,8 @@ with col_prev:
 with col_counter:
   st.markdown(
       f"<p style='text-align: center; color: #18181b; font-weight: bold;"
-      f" font-size: 14px; margin-top: 10px;'>SLAYT {st.session_state.slide_idx +"
-      f" 1} / {total}</p>",
+      f" font-size: 14px; margin-top: 10px;'>SLAYT {current_slide} /"
+      f" {total}</p>",
       unsafe_allow_html=True,
   )
 
