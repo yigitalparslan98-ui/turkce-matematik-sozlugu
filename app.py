@@ -1,22 +1,15 @@
 import streamlit as st
 
 st.set_page_config(
-    page_title="Türkçe Matematik Sözlüğü", page_icon="📐", layout="wide"
+    page_title="Türkçe Matematik Sözlüğü", page_icon=None, layout="wide"
 )
 
-# Tum uygulamayi Arial fontuna geciren CSS Stili
-st.markdown(
-    """
-    <style>
-    html, body, [class*="css"], div, p, span, h1, h2, h3, h4, h5, h6, input, button {
-        font-family: Arial, sans-serif !important;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True,
-)
+# Vektörel / Minimalist Tasarım İçin Saf SVG İkon Tanımları
+icon_book = '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 8px;"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h12"/><path d="M6 10h12"/></svg>'
+icon_search = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 6px;"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>'
+icon_light = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 6px;"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>'
 
-# A'dan Z'ye tum harfleri kapsayan Matematik Sozluğu Veritabanı
+# A'dan Z'ye Tüm Harfleri Kapsayan Matematik Sözlüğü Veritabanı
 math_dictionary = [
     {
         "term": "Açı",
@@ -65,7 +58,7 @@ math_dictionary = [
         "desc": (
             "Bir çember çevresinin 360'ta birine denk gelen açı ölçü birimi."
         ),
-        "example": "Bir tam çember açısı 360 derecederedir (360°).",
+        "example": "Bir tam çember açısı 360 derecedir (360°).",
     },
     {
         "term": "Eğim",
@@ -260,7 +253,9 @@ math_dictionary = [
 ]
 
 # Yan Menü (Sidebar) - Gezinme
-st.sidebar.title("📌 Sözlük Menüsü")
+st.sidebar.markdown(
+    f"<h3>{icon_book} Sözlük Menüsü</h3>", unsafe_allow_html=True
+)
 mode = st.sidebar.radio("Görünüm Modu:", ["Slayt Modu", "A'dan Z'ye Sözlük Arama"])
 
 st.sidebar.divider()
@@ -275,17 +270,17 @@ if mode == "Slayt Modu":
 
   col_nav1, col_nav2, col_nav3 = st.columns([1, 2, 1])
   with col_nav1:
-    if st.button("⬅️ Önceki Terim"):
+    if st.button("Önceki Terim"):
       if st.session_state.slide_idx > 0:
         st.session_state.slide_idx -= 1
   with col_nav2:
     st.markdown(
-        f"<h4 style='text-align: center; font-family: Arial;'>Terim"
+        f"<h4 style='text-align: center;'>Terim"
         f" {st.session_state.slide_idx + 1} / {total}</h4>",
         unsafe_allow_html=True,
     )
   with col_nav3:
-    if st.button("Sonraki Terim ➡️"):
+    if st.button("Sonraki Terim"):
       if st.session_state.slide_idx < total - 1:
         st.session_state.slide_idx += 1
 
@@ -295,17 +290,20 @@ if mode == "Slayt Modu":
   item = math_dictionary[st.session_state.slide_idx]
 
   st.divider()
-  st.title(f"📐 {item['term']}")
+  st.markdown(f"<h2>{icon_book} {item['term']}</h2>", unsafe_allow_html=True)
   st.caption(f"Kategori: **{item['category']}**")
 
   st.info(f"**Tanım:** {item['desc']}")
 
-  with st.expander("💡 Örnek ve Kullanım", expanded=True):
-    st.write(item["example"])
+  with st.expander("Örnek ve Kullanım", expanded=True):
+    st.markdown(f"{icon_light} {item['example']}", unsafe_allow_html=True)
 
 # MOD 2: ARAMA MODU
 else:
-  st.title("🔍 Türkçe Matematik Sözlüğü - Arama")
+  st.markdown(
+      f"<h1>{icon_search} Türkçe Matematik Sözlüğü - Arama</h1>",
+      unsafe_allow_html=True,
+  )
   search = st.text_input("Aramak istediğiniz terimi veya harfi yazın:", "")
 
   results = [
