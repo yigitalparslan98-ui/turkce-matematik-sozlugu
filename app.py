@@ -1,15 +1,74 @@
 import streamlit as st
 
 st.set_page_config(
-    page_title="Türkçe Matematik Sözlüğü", page_icon=None, layout="wide"
+    page_title="Türkçe Matematik Sözlüğü", page_icon=None, layout="centered"
 )
 
-# Vektörel / Minimalist Tasarım İçin Saf SVG İkon Tanımları
-icon_book = '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 8px;"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h12"/><path d="M6 10h12"/></svg>'
-icon_search = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 6px;"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>'
-icon_light = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 6px;"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>'
+# Keskin, köşeli ve minimalist slayt kartı stili (Arial Font)
+st.markdown(
+    """
+    <style>
+    html, body, [class*="css"], div, p, span, h1, h2, h3, h4, h5, h6, button {
+        font-family: Arial, sans-serif !important;
+    }
+    .stApp {
+        background-color: #f4f4f5;
+    }
+    /* Keskin köşeli ana slayt kartı */
+    .slide-card {
+        background-color: #ffffff;
+        border: 2px solid #18181b;
+        border-radius: 0px !important;
+        padding: 40px;
+        box-shadow: 6px 6px 0px #18181b;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        min-height: 380px;
+    }
+    .slide-category {
+        color: #52525b;
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 12px;
+        font-weight: 700;
+    }
+    .slide-title {
+        color: #09090b;
+        font-size: 42px;
+        font-weight: 800;
+        margin-bottom: 24px;
+        letter-spacing: -0.5px;
+    }
+    .slide-desc {
+        color: #27272a;
+        font-size: 20px;
+        line-height: 1.6;
+        margin-bottom: 28px;
+    }
+    /* Keskin köşeli örnek kutusu */
+    .slide-example {
+        background-color: #f4f4f5;
+        border: 1px solid #18181b;
+        border-left: 6px solid #18181b;
+        border-radius: 0px !important;
+        padding: 16px 20px;
+        font-size: 16px;
+        color: #27272a;
+    }
+    /* Butonları köşeli yapma */
+    .stButton > button {
+        border-radius: 0px !important;
+        border: 2px solid #18181b !important;
+        font-weight: bold !important;
+        box-shadow: 3px 3px 0px #18181b !important;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
 
-# A'dan Z'ye Tüm Harfleri Kapsayan Matematik Sözlüğü Veritabanı
+# Matematik Sözlüğü Veritabanı (A-Z)
 math_dictionary = [
     {
         "term": "Açı",
@@ -28,7 +87,7 @@ math_dictionary = [
             " sayılar."
         ),
         "example": (
-            "2, 3, 5, 7, 11, 13, 17... En küçük ve tek çift asal sayı 2'dir."
+            "2, 3, 5, 7, 11, 13... En küçük ve tek çift asal sayı 2'dir."
         ),
     },
     {
@@ -39,8 +98,7 @@ math_dictionary = [
             " çember."
         ),
         "example": (
-            "Sinüs ve kosinüs değerlerinin geometrik olarak gösterildiği"
-            " çemberdir."
+            "Sinüs ve kosinüs değerlerinin geometrik gösteriminde kullanılır."
         ),
     },
     {
@@ -123,11 +181,11 @@ math_dictionary = [
         "example": "Türevin ters işlemi olarak kabul edilir.",
     },
     {
-        "term": "Kordinat Sistemi",
+        "term": "Koordinat Sistemi",
         "category": "Analitik Geometri",
         "desc": (
             "Bir noktanın konumunu belirlemek için dik kesişen iki sayı"
-            " doğrusunun (x ve y eksenleri) oluşturduğu sistem."
+            " doğrusunun oluşturduğu sistem."
         ),
         "example": "Orijin noktası (0,0) koordinatına sahiptir.",
     },
@@ -173,10 +231,7 @@ math_dictionary = [
             "Dik üçgende dik açıdan hipotenüse indirilen dikmenin kenarlar"
             " arasındaki ilişkisi (h² = p · k)."
         ),
-        "example": (
-            "Hipotenüse ait yüksekliğin karesi, ayırdığı parçaların çarpımına"
-            " eşittir."
-        ),
+        "example": "Yüksekliğin karesi, ayırdığı parçaların çarpımına eşittir.",
     },
     {
         "term": "Polinom",
@@ -252,76 +307,53 @@ math_dictionary = [
     },
 ]
 
-# Yan Menü (Sidebar) - Gezinme
-st.sidebar.markdown(
-    f"<h3>{icon_book} Sözlük Menüsü</h3>", unsafe_allow_html=True
+# Slayt İndeksi Yönetimi
+if "slide_idx" not in st.session_state:
+  st.session_state.slide_idx = 0
+
+total = len(math_dictionary)
+item = math_dictionary[st.session_state.slide_idx]
+
+# Üst Bilgi / İlerleme Barı
+st.progress((st.session_state.slide_idx + 1) / total)
+
+# SLAYT KARTI (Köşeli HTML / CSS)
+st.markdown(
+    f"""
+    <div class="slide-card">
+        <div class="slide-category">{item['category']}</div>
+        <div class="slide-title">{item['term']}</div>
+        <div class="slide-desc">{item['desc']}</div>
+        <div class="slide-example"><b>Örnek:</b> {item['example']}</div>
+    </div>
+    """,
+    unsafe_allow_html=True,
 )
-mode = st.sidebar.radio("Görünüm Modu:", ["Slayt Modu", "A'dan Z'ye Sözlük Arama"])
 
-st.sidebar.divider()
-st.sidebar.write("Hazırlayan: **Yiğit**")
 
-# MOD 1: SLAYT SUNUM MODU
-if mode == "Slayt Modu":
-  if "slide_idx" not in st.session_state:
-    st.session_state.slide_idx = 0
+# Alt Kontrol Butonları
+def prev_slide():
+  if st.session_state.slide_idx > 0:
+    st.session_state.slide_idx -= 1
 
-  total = len(math_dictionary)
 
-  col_nav1, col_nav2, col_nav3 = st.columns([1, 2, 1])
-  with col_nav1:
-    if st.button("Önceki Terim"):
-      if st.session_state.slide_idx > 0:
-        st.session_state.slide_idx -= 1
-  with col_nav2:
-    st.markdown(
-        f"<h4 style='text-align: center;'>Terim"
-        f" {st.session_state.slide_idx + 1} / {total}</h4>",
-        unsafe_allow_html=True,
-    )
-  with col_nav3:
-    if st.button("Sonraki Terim"):
-      if st.session_state.slide_idx < total - 1:
-        st.session_state.slide_idx += 1
+def next_slide():
+  if st.session_state.slide_idx < total - 1:
+    st.session_state.slide_idx += 1
 
-  st.progress((st.session_state.slide_idx + 1) / total)
 
-  # Aktif Terim Kartı
-  item = math_dictionary[st.session_state.slide_idx]
+col_prev, col_counter, col_next = st.columns([1, 2, 1])
 
-  st.divider()
-  st.markdown(f"<h2>{icon_book} {item['term']}</h2>", unsafe_allow_html=True)
-  st.caption(f"Kategori: **{item['category']}**")
+with col_prev:
+  st.button("← Önceki", on_click=prev_slide, use_container_width=True)
 
-  st.info(f"**Tanım:** {item['desc']}")
-
-  with st.expander("Örnek ve Kullanım", expanded=True):
-    st.markdown(f"{icon_light} {item['example']}", unsafe_allow_html=True)
-
-# MOD 2: ARAMA MODU
-else:
+with col_counter:
   st.markdown(
-      f"<h1>{icon_search} Türkçe Matematik Sözlüğü - Arama</h1>",
+      f"<p style='text-align: center; color: #18181b; font-weight: bold;"
+      f" font-size: 14px; margin-top: 10px;'>SLAYT {st.session_state.slide_idx +"
+      f" 1} / {total}</p>",
       unsafe_allow_html=True,
   )
-  search = st.text_input("Aramak istediğiniz terimi veya harfi yazın:", "")
 
-  results = [
-      item
-      for item in math_dictionary
-      if search.lower() in item["term"].lower()
-      or search.lower() in item["category"].lower()
-  ]
-
-  if results:
-    for item in results:
-      col_a, col_b = st.columns([1, 3])
-      with col_a:
-        st.metric(label="Kategori", value=item["category"])
-      with col_b:
-        st.subheader(item["term"])
-        st.write(item["desc"])
-        st.caption(f"Örnek: {item['example']}")
-      st.divider()
-  else:
-    st.warning("Aradığınız kriterlere uygun terim bulunamadı.")
+with col_next:
+  st.button("Sonraki →", on_click=next_slide, use_container_width=True)
